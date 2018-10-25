@@ -23,16 +23,16 @@ end
 in_thread do
   loop do
     sync :beat
-    note = (scale get[:root], :major_pentatonic, num_octaves: 3).drop_last(3).reflect.drop_last(1).tick
-    play note, pan: get[:pan_bottom], attack: get[:attack], attack_level: get[:attack_level], decay: get[:decay], decay_level: get[:decay_level], sustain: get[:sustain], sustain_level: get[:sustain_level], release: get[:release]
+    note = (scale get[:root] + get[:interval], :minor_pentatonic, num_octaves: 3).drop_last(3).reflect.butlast.tick
+    #play note, pan: get[:pan_top], attack: get[:attack], attack_level: get[:attack_level], decay: get[:decay], decay_level: get[:decay_level], sustain: get[:sustain], sustain_level: get[:sustain_level], release: get[:release]
   end
 end
 
 in_thread do
   loop do
     sync :beat
-    note = (scale get[:root] + get[:interval], :minor_pentatonic, num_octaves: 3).drop_last(3).reflect.drop_last(1).tick
-    play note, pan: get[:pan_top], attack: get[:attack], attack_level: get[:attack_level], decay: get[:decay], decay_level: get[:decay_level], sustain: get[:sustain], sustain_level: get[:sustain_level], release: get[:release]
+    note = (scale get[:root], :major_pentatonic, num_octaves: 3).drop_last(3).reflect.butlast.tick
+    play note, pan: get[:pan_bottom], attack: get[:attack], attack_level: get[:attack_level], decay: get[:decay], decay_level: get[:decay_level], sustain: get[:sustain], sustain_level: get[:sustain_level], release: get[:release]
   end
 end
 
@@ -47,6 +47,10 @@ end
 in_thread do
   loop do
     sync :beat
+    set :pan_top, (range 0.9, -0.9, step: 0.0375, inclusive: true).reflect.butlast.tick
+    set :pan_bottom, (range -0.9, 0.9, step: 0.0375, inclusive: true).reflect.butlast.tick
     
+    puts "bottom:" if beat % 24 == 0
+    puts get[:pan_bottom]
   end
 end
