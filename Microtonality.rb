@@ -43,8 +43,8 @@ end
 in_thread do
   loop do
     sync :beat
-    set :a_pan_top, (range 0.9, -0.9, step: 0.0375, inclusive: true).reflect.butlast.tick
-    set :a_pan_bottom, (range -0.9, 0.9, step: 0.0375, inclusive: true).reflect.butlast.tick
+    set :a_pan_top, (range 0.9, -0.9, step: 0.075, inclusive: true).reflect.butlast.tick
+    set :a_pan_bottom, (range -0.9, 0.9, step: 0.075, inclusive: true).reflect.butlast.tick
   end
 end
 
