@@ -55,6 +55,6 @@ end
 in_thread do
   loop do
     sync :beat
-    set :release, (range 3.44, 0.44, step: 0.25, inclusive: true).reflect.butlast.tick
+    set :release, (range 2.9, 0.5, step: 0.2, inclusive: true).reflect.butlast.tick
   end
 end
