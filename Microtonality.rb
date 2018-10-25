@@ -51,3 +51,10 @@ in_thread do
     set :pan_bottom, (range -0.9, 0.9, step: 0.0375, inclusive: true).reflect.butlast.tick
   end
 end
+
+in_thread do
+  loop do
+    sync :beat
+    set :release, (ring 0.5, 1, 0.1, 0.3).tick
+  end
+end
