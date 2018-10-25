@@ -13,7 +13,19 @@ in_thread do
   loop do
     sync :beat
     play (scale get[:root], :major_pentatonic, num_octaves: 3).drop_last(3).reflect.drop_last(1).tick
+  end
+end
+
+in_thread do
+  loop do
+    sync :beat
     play (scale get[:root] + get[:interval], :minor_pentatonic, num_octaves: 3).drop_last(3).reflect.drop_last(1).tick
+  end
+end
+
+in_thread do
+  loop do
+    sync :beat
     set :root, get[:root] + 1.5 if beat % 24 == 0
   end
 end
