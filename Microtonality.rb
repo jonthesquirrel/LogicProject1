@@ -5,7 +5,7 @@ set :interval, 3
 
 set :pan_top, 0.9
 set :pan_bottom, -0.9
-set :attack, 0
+set :attack, 0.1
 set :attack_level, 1
 set :decay, 0
 set :decay_level, 1
@@ -55,6 +55,6 @@ end
 in_thread do
   loop do
     sync :beat
-    set :release, (range 2.9, 0.5, step: 0.2, inclusive: true).reflect.butlast.tick
+    set :release, (range 2.7, 0.3, step: 0.2, inclusive: true).reflect.butlast.tick
   end
 end
