@@ -1,4 +1,5 @@
 use_bpm 120 * 4
+
 set :a_original_root, :e3
 set :a_root, get[:a_original_root]
 set :a_interval, 3
@@ -53,4 +54,3 @@ in_thread do
     set :a_release, (range 2.7, 0.3, step: 0.2, inclusive: true).reflect.butlast.tick
   end
 end
-
